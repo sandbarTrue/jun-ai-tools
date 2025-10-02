@@ -1,5 +1,5 @@
 // public/script.js
-// 前端本地生成 + 可选调用后端 API
+// 前端本地多格式引文生成器 - 支持 MLA, APA, Chicago, Harvard, IEEE 等
 
 // 与后端逻辑保持一致的前端格式化工具（精简版）
 const Utils = (() => {
@@ -104,14 +104,192 @@ const Utils = (() => {
     const html = [a&&escapeHtml(ensurePeriodEnd(a)), at&&`“${escapeHtml(at)}.”`, jn&&`<i>${escapeHtml(jn)}</i>,`, vi&&`${escapeHtml(vi)},`, y&&`${escapeHtml(y)},`, pg&&`${escapeHtml(pg)}.`, link&&`<a href="${escapeHtml(link)}" target="_blank">${escapeHtml(ensurePeriodEnd(link))}</a>`].filter(Boolean).join(" ");
     return { citationText: text, citationHTML: html };
   };
-  const generateCitation = (type, data) => {
-    if (type==='book') return buildBook(data);
-    if (type==='website') return buildWebsite(data);
-    if (type==='journal') return buildJournal(data);
+  // APA 7 格式生成器
+  const buildBookAPA = (d) => {
+    const a = formatAuthorsAPA(d.authors);
+    const t = (d.title||"").trim();
+    const ed = (d.edition||"").trim();
+    const pub = (d.publisher||"").trim();
+    const y = (d.year||"").trim();
+    const doi = chooseLink(d.doiOrUrl||"");
+    
+    const text = `${a} (${y}). ${t}${ed ? ` (${ed})` : ''}. ${pub}${doi ? `. ${doi}` : ''}.`;
+    const html = `${escapeHtml(a)} (${escapeHtml(y)}). <i>${escapeHtml(t)}</i>${ed ? ` (${escapeHtml(ed)})` : ''}. ${escapeHtml(pub)}${doi ? `. <a href="${escapeHtml(doi)}" target="_blank">${escapeHtml(doi)}</a>` : ''}.`;
+    
+    return { citationText: text, citationHTML: html };
+  };
+
+  const buildWebsiteAPA = (d) => {
+    const a = formatAuthorsAPA(d.authors);
+    const pt = (d.pageTitle||"").trim();
+    const ws = (d.websiteName||"").trim();
+    const pub = (d.publisher||"").trim();
+    const u = (d.url||"").trim();
+    const pd = formatDateAPA(d.publishDate||"");
+    const ad = formatDateAPA(d.accessDate||"");
+    
+    const text = `${a} (${pd}). ${pt}. ${ws}. ${pub ? `${pub}. ` : ''}${u}${ad ? ` (Accessed ${ad})` : ''}`;
+    const html = `${escapeHtml(a)} (${escapeHtml(pd)}). ${escapeHtml(pt)}. <i>${escapeHtml(ws)}</i>. ${pub ? `${escapeHtml(pub)}. ` : ''}<a href="${escapeHtml(u)}" target="_blank">${escapeHtml(u)}</a>${ad ? ` (Accessed ${escapeHtml(ad)})` : ''}`;
+    
+    return { citationText: text, citationHTML: html };
+  };
+
+  const buildJournalAPA = (d) => {
+    const a = formatAuthorsAPA(d.authors);
+    const at = (d.articleTitle||"").trim();
+    const jn = (d.journalName||"").trim();
+    const vol = (d.volume||"").trim();
+    const iss = (d.issue||"").trim();
+    const y = (d.year||"").trim();
+    const pg = formatPagesText(d.pages||"");
+    const doi = chooseLink(d.doiOrUrl||"");
+    
+    const text = `${a} (${y}). ${at}. <i>${jn}</i>, ${vol}${iss ? `(${iss})` : ''}${pg ? `, ${pg}` : ''}. ${doi || ''}`;
+    const html = `${escapeHtml(a)} (${escapeHtml(y)}). ${escapeHtml(at)}. <i>${escapeHtml(jn)}</i>, ${escapeHtml(vol)}${iss ? `(${escapeHtml(iss)})` : ''}${pg ? `, ${escapeHtml(pg)}` : ''}. ${doi ? `<a href="${escapeHtml(doi)}" target="_blank">${escapeHtml(doi)}</a>` : ''}`;
+    
+    return { citationText: text, citationHTML: html };
+  };
+
+  // Chicago 格式生成器
+  const buildBookChicago = (d) => {
+    const a = formatAuthorsChicago(d.authors);
+    const t = (d.title||"").trim();
+    const ed = (d.edition||"").trim();
+    const pub = (d.publisher||"").trim();
+    const y = (d.year||"").trim();
+    const doi = chooseLink(d.doiOrUrl||"");
+    
+    const text = `${a}. ${t}${ed ? `, ${ed}` : ''}. ${pub}, ${y}${doi ? `. ${doi}` : ''}.`;
+    const html = `${escapeHtml(a)}. <i>${escapeHtml(t)}</i>${ed ? `, ${escapeHtml(ed)}` : ''}. ${escapeHtml(pub)}, ${escapeHtml(y)}${doi ? `. <a href="${escapeHtml(doi)}" target="_blank">${escapeHtml(doi)}</a>` : ''}.`;
+    
+    return { citationText: text, citationHTML: html };
+  };
+
+  // Harvard 格式生成器
+  const buildBookHarvard = (d) => {
+    const a = formatAuthorsHarvard(d.authors);
+    const t = (d.title||"").trim();
+    const ed = (d.edition||"").trim();
+    const pub = (d.publisher||"").trim();
+    const y = (d.year||"").trim();
+    const doi = chooseLink(d.doiOrUrl||"");
+    
+    const text = `${a} ${y}, ${t}${ed ? `, ${ed}` : ''}, ${pub}${doi ? `, ${doi}` : ''}.`;
+    const html = `${escapeHtml(a)} ${escapeHtml(y)}, <i>${escapeHtml(t)}</i>${ed ? `, ${escapeHtml(ed)}` : ''}, ${escapeHtml(pub)}${doi ? `, <a href="${escapeHtml(doi)}" target="_blank">${escapeHtml(doi)}</a>` : ''}.`;
+    
+    return { citationText: text, citationHTML: html };
+  };
+
+  // IEEE 格式生成器
+  const buildBookIEEE = (d) => {
+    const a = formatAuthorsIEEE(d.authors);
+    const t = (d.title||"").trim();
+    const pub = (d.publisher||"").trim();
+    const y = (d.year||"").trim();
+    const doi = chooseLink(d.doiOrUrl||"");
+    
+    const text = `${a}, "${t}," ${pub}, ${y}${doi ? `, ${doi}` : ''}.`;
+    const html = `${escapeHtml(a)}, "${escapeHtml(t)}," ${escapeHtml(pub)}, ${escapeHtml(y)}${doi ? `, <a href="${escapeHtml(doi)}" target="_blank">${escapeHtml(doi)}</a>` : ''}.`;
+    
+    return { citationText: text, citationHTML: html };
+  };
+
+  // 辅助函数
+  const formatAuthorsAPA = (authors = []) => {
+    const parsed = authors.map(parseAuthorName).filter(a => a.first || a.last);
+    if (!parsed.length) return "";
+    if (parsed.length === 1) {
+      const a = parsed[0];
+      return `${a.last}, ${a.first.charAt(0).toUpperCase()}.`;
+    }
+    if (parsed.length === 2) {
+      const a1 = parsed[0], a2 = parsed[1];
+      return `${a1.last}, ${a1.first.charAt(0).toUpperCase()}., & ${a2.first.charAt(0).toUpperCase()}. ${a2.last}`;
+    }
+    const first = parsed[0];
+    return `${first.last}, ${first.first.charAt(0).toUpperCase()}., et al.`;
+  };
+
+  const formatAuthorsChicago = (authors = []) => {
+    const parsed = authors.map(parseAuthorName).filter(a => a.first || a.last);
+    if (!parsed.length) return "";
+    if (parsed.length === 1) {
+      const a = parsed[0];
+      return `${a.first} ${a.last}`;
+    }
+    if (parsed.length === 2) {
+      const a1 = parsed[0], a2 = parsed[1];
+      return `${a1.first} ${a1.last} and ${a2.first} ${a2.last}`;
+    }
+    const first = parsed[0];
+    return `${first.first} ${first.last} et al.`;
+  };
+
+  const formatAuthorsHarvard = (authors = []) => {
+    const parsed = authors.map(parseAuthorName).filter(a => a.first || a.last);
+    if (!parsed.length) return "";
+    if (parsed.length === 1) {
+      const a = parsed[0];
+      return `${a.last}, ${a.first.charAt(0).toUpperCase()}.`;
+    }
+    if (parsed.length === 2) {
+      const a1 = parsed[0], a2 = parsed[1];
+      return `${a1.last}, ${a1.first.charAt(0).toUpperCase()}. and ${a2.first.charAt(0).toUpperCase()}. ${a2.last}`;
+    }
+    const first = parsed[0];
+    return `${first.last}, ${first.first.charAt(0).toUpperCase()}. et al.`;
+  };
+
+  const formatAuthorsIEEE = (authors = []) => {
+    const parsed = authors.map(parseAuthorName).filter(a => a.first || a.last);
+    if (!parsed.length) return "";
+    return parsed.map(a => `${a.first.charAt(0).toUpperCase()}. ${a.last}`).join(', ');
+  };
+
+  const formatDateAPA = (iso) => {
+    const s = collapseSpaces(iso);
+    if (!s) return "n.d.";
+    const parts = s.split("-").map(p => parseInt(p,10));
+    const year = parts[0];
+    if (!year) return "n.d.";
+    const month = parts[1];
+    const day = parts[2];
+    if (month && day) return `${monthAbbrev(month)} ${day}, ${year}`;
+    if (month) return `${monthAbbrev(month)} ${year}`;
+    return String(year);
+  };
+
+  const generateCitation = (format, type, data) => {
+    if (format === 'mla9') {
+      if (type==='book') return buildBook(data);
+      if (type==='website') return buildWebsite(data);
+      if (type==='journal') return buildJournal(data);
+    } else if (format === 'apa7') {
+      if (type==='book') return buildBookAPA(data);
+      if (type==='website') return buildWebsiteAPA(data);
+      if (type==='journal') return buildJournalAPA(data);
+    } else if (format === 'chicago') {
+      if (type==='book') return buildBookChicago(data);
+      if (type==='website') return buildWebsite(data); // 简化处理
+      if (type==='journal') return buildJournal(data); // 简化处理
+    } else if (format === 'harvard') {
+      if (type==='book') return buildBookHarvard(data);
+      if (type==='website') return buildWebsite(data); // 简化处理
+      if (type==='journal') return buildJournal(data); // 简化处理
+    } else if (format === 'ieee') {
+      if (type==='book') return buildBookIEEE(data);
+      if (type==='website') return buildWebsite(data); // 简化处理
+      if (type==='journal') return buildJournal(data); // 简化处理
+    }
     return { citationText: '', citationHTML: '' };
   };
 
-  return { collapseSpaces, parseAuthorName, formatAuthorsText, monthAbbrev, formatDateText, formatPagesText, chooseLink, ensurePeriodEnd, escapeHtml, buildBook, buildWebsite, buildJournal, generateCitation };
+  return { 
+    collapseSpaces, parseAuthorName, formatAuthorsText, monthAbbrev, formatDateText, formatPagesText, 
+    chooseLink, ensurePeriodEnd, escapeHtml, buildBook, buildWebsite, buildJournal, 
+    buildBookAPA, buildWebsiteAPA, buildJournalAPA, buildBookChicago, buildBookHarvard, buildBookIEEE,
+    generateCitation 
+  };
 })();
 
 // 界面逻辑
@@ -119,16 +297,11 @@ const el = (sel) => document.querySelector(sel);
 const elAll = (sel) => Array.from(document.querySelectorAll(sel));
 
 const state = {
+  format: 'mla9',
   type: 'book',
   authors: [ '' ],
 };
 
-function updateBackendStatus() {
-  fetch('/mla/api/health', { method: 'GET' })
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(() => { el('#backendStatus').textContent = 'Backend available'; })
-    .catch(() => { el('#backendStatus').textContent = 'Backend unavailable (switched to local generation)'; el('#useBackend').checked = false; });
-}
 
 function renderAuthors() {
   const container = el('#authorsList');
@@ -249,10 +422,12 @@ function renderFields() {
 }
 
 function collectData() {
+  const format = state.format;
   const type = state.type;
   const authors = state.authors.map(Utils.collapseSpaces).filter(Boolean);
   if (type === 'book') {
     return {
+      format,
       type,
       data: {
         authors,
@@ -265,6 +440,7 @@ function collectData() {
     };
   } else if (type === 'website') {
     return {
+      format,
       type,
       data: {
         authors,
@@ -278,6 +454,7 @@ function collectData() {
     };
   } else {
     return {
+      format,
       type,
       data: {
         authors,
@@ -299,34 +476,16 @@ function renderPreview(result) {
 }
 
 function localGenerate() {
-  const { type, data } = collectData();
-  const result = Utils.generateCitation(type, data);
+  const { format, type, data } = collectData();
+  const result = Utils.generateCitation(format, type, data);
   renderPreview(result);
 }
 
-async function backendGenerate() {
-  const { type, data } = collectData();
-  try {
-    const resp = await fetch('/mla/api/generate', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type, data })
-    });
-    const json = await resp.json();
-    if (!json.ok) {
-      alert('Backend validation failed:\n' + (json.errors || []).join('\n'));
-      return;
-    }
-    renderPreview(json);
-  } catch (e) {
-    el('#backendStatus').textContent = 'Backend unavailable (switched to local generation)';
-    el('#useBackend').checked = false;
-    localGenerate();
-  }
-}
 
 function bindEvents() {
+  el('#citationFormat').addEventListener('change', (e) => { state.format = e.target.value; localGenerate(); });
   el('#sourceType').addEventListener('change', (e) => { state.type = e.target.value; renderFields(); localGenerate(); });
   el('#addAuthor').addEventListener('click', () => { state.authors.push(''); renderAuthors(); localGenerate(); });
-  el('#useBackend').addEventListener('change', () => { if (el('#useBackend').checked) backendGenerate(); else localGenerate(); });
 
   el('#authorsList').addEventListener('input', (e) => {
     const idx = e.target.getAttribute('data-idx');
@@ -340,7 +499,7 @@ function bindEvents() {
   document.body.addEventListener('input', (e) => {
     const id = e.target.id;
     if (['title','edition','publisher','year','doiOrUrl','pageTitle','websiteName','url','publishDate','accessDate','articleTitle','journalName','volume','issue','pages'].includes(id)) {
-      if (el('#useBackend').checked) backendGenerate(); else localGenerate();
+      localGenerate();
     }
   });
 
@@ -366,7 +525,6 @@ function init() {
   renderAuthors();
   renderFields();
   bindEvents();
-  updateBackendStatus();
   localGenerate();
 }
 
