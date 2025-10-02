@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MLA 9 Citation Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="font-['Noto Sans',sans-serif] bg-gray-50 text-gray-800">
+  <header class="bg-white shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-2xl font-semibold">MLA 9 Citation Generator</h1>
+      <div class="text-sm text-gray-500">Local, instant generation · Optional backend API validation</div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-6 space-y-6">
+    <section class="bg-white p-4 rounded-lg shadow">
+      <div class="flex flex-col sm:flex-row gap-4 items-start">
+        <div class="sm:w-64">
+          <label class="block text-sm font-medium mb-1">Source Type</label>
+          <select id="sourceType" class="w-full border rounded px-3 py-2">
+            <option value="book">Book</option>
+            <option value="website">Website / Page</option>
+            <option value="journal">Journal Article</option>
+          </select>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3">
+            <label class="inline-flex items-center"><input id="useBackend" type="checkbox" class="mr-2">Generate via backend API</label>
+            <span id="backendStatus" class="text-xs text-gray-500">Backend status unknown</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white p-4 rounded-lg shadow">
+      <h2 class="text-lg font-semibold mb-3">Authors</h2>
+      <div id="authorsList" class="space-y-2"></div>
+      <button id="addAuthor" class="mt-2 px-3 py-2 bg-indigo-600 text-white rounded">+ Add Author</button>
+      <p class="text-xs text-gray-500 mt-2">Rules: List one or two authors in full; for three or more, use “et al.”; names display as “Last, First.”</p>
+    </section>
+
+    <section id="fieldsContainer" class="bg-white p-4 rounded-lg shadow">
+      <!-- 动态字段将插入到此处 -->
+    </section>
+
+    <section class="bg-white p-4 rounded-lg shadow">
+      <h2 class="text-lg font-semibold mb-3">Live Preview</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <h3 class="font-medium mb-2">Text</h3>
+          <pre id="previewText" class="min-h-[96px] bg-gray-100 p-3 rounded whitespace-pre-wrap"></pre>
+          <div class="flex gap-2 mt-2">
+            <button id="copyText" class="px-3 py-2 bg-gray-800 text-white rounded">Copy Text</button>
+            <button id="downloadText" class="px-3 py-2 bg-gray-800 text-white rounded">Download Text</button>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-medium mb-2">HTML</h3>
+          <div id="previewHTML" class="min-h-[96px] bg-gray-100 p-3 rounded"></div>
+          <div class="flex gap-2 mt-2">
+            <button id="downloadHTML" class="px-3 py-2 bg-gray-800 text-white rounded">Download HTML</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="text-xs text-gray-500">
+      Tip: For websites, include an access date; for journal sources, include volume, issue, pages, and DOI/URL; book and journal titles are italicized in HTML output.
+    </section>
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 py-6 text-sm text-gray-500">
+    © 2025 MLA Generator for MLA 9
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
