@@ -9,8 +9,8 @@
     "dev": "nodemon server.js",
     "test:webhook": "node test-webhook.js",
     "logs:clean": "node cleanup-logs.js",
-    "logs:view": "tail -f logs/app-$(date +%Y-%m-%d).log",
-    "logs:list": "ls -la logs/",
+    "logs:view": "tail -f ${LOG_DIR:-/home/ztshkzhkyl/log}/app-$(date +%Y-%m-%d).log",
+    "logs:list": "ls -la ${LOG_DIR:-/home/ztshkzhkyl/log}/",
     "start:prod": "NODE_ENV=production node server.js",
     "start:dev": "NODE_ENV=development node server.js"
   },

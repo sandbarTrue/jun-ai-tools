@@ -4,7 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const LOGS_DIR = 'logs';
+const LOGS_DIR = process.env.LOG_DIR || '/home/ztshkzhkyl/log';
 const KEEP_DAYS = 30; // 保留30天的日志
 
 function cleanupLogs() {

@@ -19,3 +19,6 @@ CREEM_WEBHOOK_SECRET=your_webhook_secret_here
 
 # 服务器端口
 PORT=3000
+
+# 日志目录配置
+LOG_DIR=/home/ztshkzhkyl/log

@@ -57,12 +57,14 @@ app.use(express.urlencoded({ extended: true }));
 // 日志记录功能 - 按日期分割
 const getLogFileName = () => {
   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-  return `logs/app-${today}.log`;
+  const logDir = process.env.LOG_DIR || '/home/ztshkzhkyl/log';
+  return `${logDir}/app-${today}.log`;
 };
 
 const ensureLogsDir = () => {
-  if (!fs.existsSync('logs')) {
-    fs.mkdirSync('logs', { recursive: true });
+  const logDir = process.env.LOG_DIR || '/home/ztshkzhkyl/log';
+  if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir, { recursive: true });
   }
 };
 
@@ -802,7 +804,8 @@ if (require.main === module) {
     console.log(`   - Terms: http://localhost:${PORT}/mla/terms`);
     console.log(`   - Privacy: http://localhost:${PORT}/mla/privacy`);
     console.log(`   - Pricing: http://localhost:${PORT}/mla/pricing`);
-    console.log(`📝 Logs will be saved to: logs/app-YYYY-MM-DD.log`);
+    const logDir = process.env.LOG_DIR || '/home/ztshkzhkyl/log';
+    console.log(`📝 Logs will be saved to: ${logDir}/app-YYYY-MM-DD.log`);
     
     // 记录应用启动日志
     logToFile('Application started', {
