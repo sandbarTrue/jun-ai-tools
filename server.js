@@ -297,8 +297,8 @@ app.post('/api/create-checkout', async (req, res) => {
   } catch (error) {
     logToFile('Error creating Creem checkout session', {
       error: error.message,
-      response: error.response?.data,
-      status: error.response?.status
+      response: error.response && error.response.data,
+      status: error.response && error.response.status
     }, 'ERROR');
     
     console.error('Error creating checkout:', error);
@@ -350,44 +350,44 @@ app.post('/creem/webhook', (req, res) => {
     switch (eventType) {
       case 'checkout.completed':
         logToFile('✅ Webhook: Checkout completed (backup confirmation)', {
-          checkout_id: webhookData.object?.id,
-          request_id: webhookData.object?.request_id,
-          customer_email: webhookData.object?.customer?.email,
-          amount: webhookData.object?.order?.amount,
+          checkout_id: webhookData.object && webhookData.object.id,
+          request_id: webhookData.object && webhookData.object.request_id,
+          customer_email: webhookData.object && webhookData.object.customer && webhookData.object.customer.email,
+          amount: webhookData.object && webhookData.object.order && webhookData.object.order.amount,
           note: 'Primary handling via redirect URL'
         });
         break;
 
       case 'subscription.paid':
         logToFile('💰 Webhook: Subscription payment received', {
-          subscription_id: webhookData.object?.id,
-          customer_email: webhookData.object?.customer?.email,
-          amount: webhookData.object?.product?.price,
-          next_payment: webhookData.object?.next_transaction_date
+          subscription_id: webhookData.object && webhookData.object.id,
+          customer_email: webhookData.object && webhookData.object.customer && webhookData.object.customer.email,
+          amount: webhookData.object && webhookData.object.product && webhookData.object.product.price,
+          next_payment: webhookData.object && webhookData.object.next_transaction_date
         });
         break;
 
       case 'subscription.canceled':
         logToFile('❌ Webhook: Subscription cancelled', {
-          subscription_id: webhookData.object?.id,
-          customer_email: webhookData.object?.customer?.email,
-          canceled_at: webhookData.object?.canceled_at
+          subscription_id: webhookData.object && webhookData.object.id,
+          customer_email: webhookData.object && webhookData.object.customer && webhookData.object.customer.email,
+          canceled_at: webhookData.object && webhookData.object.canceled_at
         });
         break;
 
       case 'refund.created':
         logToFile('💸 Webhook: Refund processed', {
-          refund_id: webhookData.object?.id,
-          amount: webhookData.object?.refund_amount,
-          reason: webhookData.object?.reason
+          refund_id: webhookData.object && webhookData.object.id,
+          amount: webhookData.object && webhookData.object.refund_amount,
+          reason: webhookData.object && webhookData.object.reason
         });
         break;
 
       case 'dispute.created':
         logToFile('⚠️ Webhook: Dispute created', {
-          dispute_id: webhookData.object?.id,
-          amount: webhookData.object?.amount,
-          customer_email: webhookData.object?.customer?.email
+          dispute_id: webhookData.object && webhookData.object.id,
+          amount: webhookData.object && webhookData.object.amount,
+          customer_email: webhookData.object && webhookData.object.customer && webhookData.object.customer.email
         });
         break;
 
@@ -459,7 +459,7 @@ app.get('/payment/status/:checkoutId', async (req, res) => {
     logToFile('Error checking payment status', {
       checkout_id: req.params.checkoutId,
       error: error.message,
-      status: error.response?.status
+      status: error.response && error.response.status
     });
     
     res.status(500).json({ 
