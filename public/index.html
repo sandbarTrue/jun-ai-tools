@@ -12,17 +12,36 @@
   <meta property="og:type" content="website" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="/mla/static/styles.css" />
 </head>
 <body class="font-['Noto Sans',sans-serif] bg-gray-50 text-gray-800">
   <header class="bg-white shadow-sm">
-    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-      <h1 class="text-2xl font-semibold">Free Citation Generator</h1>
-      <div class="text-sm text-gray-500">MLA, APA, Chicago, Harvard, IEEE & More · Instant generation</div>
+    <div class="max-w-5xl mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-semibold">Free Citation Generator</h1>
+        <div class="flex items-center gap-4">
+          <nav class="hidden md:flex space-x-4">
+            <a href="/mla/terms" class="text-gray-600 hover:text-gray-900 text-sm">Terms</a>
+            <a href="/mla/privacy" class="text-gray-600 hover:text-gray-900 text-sm">Privacy</a>
+            <a href="/mla/pricing" class="text-gray-600 hover:text-gray-900 text-sm">Pricing</a>
+          </nav>
+          <!-- Upgrade to Pro button - temporarily disabled -->
+          <!-- <a href="/testPay" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-blue-700 hover:to-purple-700 transition-all">
+            🚀 Upgrade to Pro
+          </a> -->
+        </div>
+      </div>
     </div>
   </header>
 
   <main class="max-w-5xl mx-auto px-4 py-6 space-y-6">
+    <!-- Hero Section -->
+    <section class="text-center py-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Generate Citations Instantly</h2>
+      <p class="text-lg text-gray-600 mb-2">MLA, APA, Chicago, Harvard, IEEE & More</p>
+      <p class="text-sm text-gray-500">Free online citation generator for books, websites, and journal articles</p>
+    </section>
+
     <section class="bg-white p-4 rounded-lg shadow">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
@@ -86,15 +105,40 @@
     <section class="text-xs text-gray-500">
       Tip: For websites, include an access date; for journal sources, include volume, issue, pages, and DOI/URL; book and journal titles are italicized in HTML output.
     </section>
+
+    <!-- Quick Navigation -->
+    <section class="bg-white p-4 rounded-lg shadow">
+      <h2 class="text-lg font-semibold mb-3">Quick Links</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="/mla/terms" class="p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+          <h3 class="font-medium text-gray-900">Terms of Service</h3>
+          <p class="text-sm text-gray-600">Read our terms and conditions</p>
+        </a>
+        <a href="/mla/privacy" class="p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+          <h3 class="font-medium text-gray-900">Privacy Policy</h3>
+          <p class="text-sm text-gray-600">How we protect your data</p>
+        </a>
+        <a href="/mla/pricing" class="p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+          <h3 class="font-medium text-gray-900">Pricing Plans</h3>
+          <p class="text-sm text-gray-600">View our pricing options</p>
+        </a>
+      </div>
+    </section>
   </main>
 
   <footer class="max-w-5xl mx-auto px-4 py-6 text-sm text-gray-500">
     <div class="text-center">
       <p>© 2025 Free Citation Generator - MLA, APA, Chicago, Harvard, IEEE & More</p>
+      <div class="mt-4 flex justify-center space-x-6">
+        <a href="/mla/terms" class="hover:text-gray-700">Terms of Service</a>
+        <a href="/mla/privacy" class="hover:text-gray-700">Privacy Policy</a>
+        <a href="/mla/pricing" class="hover:text-gray-700">Pricing</a>
+        <a href="mailto:support@junaitools.com" class="hover:text-gray-700">Contact Support</a>
+      </div>
       <p class="mt-2">Keywords: citation generator free, mla generator, apa generator, chicago citation, harvard citation, ieee citation</p>
     </div>
   </footer>
 
-  <script src="./script.js"></script>
+  <script src="/mla/static/script.js"></script>
 </body>
 </html>

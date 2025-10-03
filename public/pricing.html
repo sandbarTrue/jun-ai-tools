@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Citation Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <header class="bg-white shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 py-4">
+            <h1 class="text-2xl font-semibold">Pricing Plans</h1>
+            <p class="text-sm text-gray-500">Choose the plan that works best for you</p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Free Plan -->
+            <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-gray-200">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Free Plan</h2>
+                    <div class="text-4xl font-bold text-gray-600 mb-2">$0</div>
+                    <p class="text-gray-500">Perfect for occasional use</p>
+                </div>
+                
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-3">✓</span>
+                        <span>Basic citation generation</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-3">✓</span>
+                        <span>MLA, APA, Chicago formats</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-3">✓</span>
+                        <span>Books, websites, journals</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-3">✓</span>
+                        <span>Copy to clipboard</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-3">✓</span>
+                        <span>Download as text</span>
+                    </li>
+                </ul>
+                
+                <a href="/mla" class="w-full bg-gray-600 text-white py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors text-center block">
+                    Get Started Free
+                </a>
+            </div>
+
+            <!-- Pro Plan -->
+            <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-blue-500 relative">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span class="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-semibold">Most Popular</span>
+                </div>
+                
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Pro Plan</h2>
+                    <div class="text-4xl font-bold text-blue-600 mb-2">$4.49</div>
+                    <p class="text-gray-500">One-time payment</p>
+                </div>
+                
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-3">✓</span>
+                        <span>Everything in Free plan</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-3">✓</span>
+                        <span>All citation formats (MLA, APA, Chicago, Harvard, IEEE)</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-3">✓</span>
+                        <span>Unlimited citations</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-3">✓</span>
+                        <span>Export to HTML format</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-3">✓</span>
+                        <span>Priority customer support</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-3">✓</span>
+                        <span>Advanced formatting options</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-3">✓</span>
+                        <span>No watermarks</span>
+                    </li>
+                </ul>
+                
+                <a href="/testPay" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors text-center block">
+                    Upgrade to Pro
+                </a>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="mt-16">
+            <h2 class="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+            <div class="bg-white p-8 rounded-lg shadow">
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="font-semibold text-lg mb-2">Is there a free trial?</h3>
+                        <p class="text-gray-600">Yes! Our free plan allows you to generate basic citations at no cost. You can upgrade to Pro anytime for advanced features.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-2">What payment methods do you accept?</h3>
+                        <p class="text-gray-600">We accept all major credit cards, PayPal, and other payment methods through our secure payment processor.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-2">Can I get a refund?</h3>
+                        <p class="text-gray-600">We offer a 30-day money-back guarantee. If you're not satisfied, contact us for a full refund.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-2">Do you offer student discounts?</h3>
+                        <p class="text-gray-600">Yes! Students can get 50% off with a valid student email. Contact support@junaitools.com for details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <a href="/mla" class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700">
+                ← Back to Citation Generator
+            </a>
+        </div>
+    </main>
+</body>
+</html>
