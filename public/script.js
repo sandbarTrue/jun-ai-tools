@@ -340,7 +340,7 @@ function renderFields() {
         </div>
         <div>
           <label class="label">Year</label>
-          <input id="year" class="${commonClass}" placeholder="e.g., 2004">
+          <input id="year" class="${commonClass}" placeholder="e.g., 1995">
         </div>
       </div>
       <div>

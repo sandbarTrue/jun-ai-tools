@@ -1,0 +1,21 @@
+# 环境配置文件示例
+# 复制此文件为 .env 并填入真实值
+
+# 环境设置 (支持的值: development, production)
+NODE_ENV=development
+
+# Creem API 配置
+# 开发环境 (测试)
+CREEM_API_KEY=creem_test_4Fie5qeiWHO9bL99G5Yw6b
+CREEM_PRODUCT_ID=prod_1hcYYAaYx0bWMGwtuGTPft
+
+# 生产环境 (正式) - 取消注释并填入真实值
+# NODE_ENV=production
+# CREEM_API_KEY=your_production_api_key_here
+# CREEM_PRODUCT_ID=your_production_product_id_here
+
+# Webhook 密钥
+CREEM_WEBHOOK_SECRET=your_webhook_secret_here
+
+# 服务器端口
+PORT=3000

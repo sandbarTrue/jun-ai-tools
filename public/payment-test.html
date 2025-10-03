@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creem Payment Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+        <h1 class="text-2xl font-bold text-center mb-6">💳 Creem Payment Test</h1>
+        
+        <div class="space-y-4">
+            <div class="text-center">
+                <p class="text-gray-600 mb-4">Test the Creem payment integration</p>
+                <p class="text-sm text-gray-500">Product: test - $4.49/Once</p>
+            </div>
+            
+            <button 
+                id="testPaymentBtn" 
+                class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+            >
+                🚀 Test Payment
+            </button>
+            
+            <div id="status" class="text-center text-sm text-gray-600 hidden">
+                <p>Redirecting to Creem checkout...</p>
+            </div>
+            
+            <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+                <h3 class="font-semibold mb-2">Available Endpoints:</h3>
+                <ul class="text-sm space-y-1">
+                    <li>• <code>/testPay</code> - Start payment</li>
+                    <li>• <code>/creem/webhook</code> - Webhook handler</li>
+                    <li>• <code>/payment/status/:id</code> - Check status</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('testPaymentBtn').addEventListener('click', function() {
+            const statusDiv = document.getElementById('status');
+            statusDiv.classList.remove('hidden');
+            
+            // 重定向到测试支付页面
+            window.location.href = '/testPay';
+        });
+    </script>
+</body>
+</html>
