@@ -95,9 +95,14 @@ const logToFile = (message, data = null, level = 'INFO') => {
     data ? JSON.stringify(data, null, 2) : '');
 };
 
-// 主页面路由 - 必须在静态文件服务之前
-app.get('/mla', (req, res) => {
+// 根路径 - 导航页面
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// MLA引文生成器页面
+app.get('/mla', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'mla.html'));
 });
 
 // 法律页面路由 - 在 /mla 路径下
