@@ -130,6 +130,11 @@ app.get('/payment-test', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'payment-test.html'));
 });
 
+// 成人网站导航页面
+app.get('/av', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'av.html'));
+});
+
 // 健康检查
 app.get('/mla/api/health', (req, res) => res.json({ ok: true }));
 
