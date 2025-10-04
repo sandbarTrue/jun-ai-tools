@@ -1,7 +1,7 @@
 // public/script.js
 // 前端本地多格式引文生成器 - 支持 MLA, APA, Chicago, Harvard, IEEE 等
 
-// 与后端逻辑保持一致的前端格式化工具（精简版）
+// 与后端逻辑保持一致的前端格式化功能（精简版）
 const Utils = (() => {
   const collapseSpaces = (str) => String(str || "").trim().replace(/\s+/g, " ");
   const parseAuthorName = (input) => {

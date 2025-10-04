@@ -1,225 +1,448 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jun AI Tools - Smart Tool Collection</title>
-  <meta name="description" content="Jun AI Tools - Providing AI tools and traditional tools, including citation generators, academic writing assistants and other professional tools" />
-  <meta name="keywords" content="AI tools, citation generator, academic writing, mla generator, apa generator, smart tools" />
-  <meta property="og:title" content="Jun AI Tools - Smart Tool Collection" />
-  <meta property="og:description" content="Providing AI tools and traditional tools, including citation generators, academic writing assistants and other professional tools" />
+  <title>Jun's AI Kingdom - AI生成网站集合王国</title>
+  <meta name="description" content="欢迎来到Jun的AI王国！这里集合了AI生成的各种各样的网站和应用，有AI网站，也有一些传统的有趣网页。按照不同分类精心整理，包括学术、心理治疗、游戏、成人等分类，每个分类下都有传统网页和AI网页供您选择。" />
+  <meta name="keywords" content="AI网站, 学术网站, 心理治疗, 游戏网站, 成人网站, 传统网页, AI网页, Jun AI王国, 引文生成器, MLA, APA, Chicago" />
+  <meta property="og:title" content="Jun's AI Kingdom - AI生成网站集合王国" />
+  <meta property="og:description" content="欢迎来到Jun的AI王国！这里集合了AI生成的各种各样的网站和应用，有AI网站，也有一些传统的有趣网页。按照不同分类精心整理，包括学术、心理治疗、游戏、成人等分类。" />
   <meta property="og:type" content="website" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-['Noto Sans',sans-serif] bg-gray-50 text-gray-800">
+<body class="font-['Noto Sans',sans-serif] bg-gradient-to-br from-purple-50 to-blue-50 text-gray-800">
   <!-- Navigation Bar -->
-  <header class="bg-white shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+  <header class="bg-white/90 backdrop-blur-sm shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
       <div class="flex items-center space-x-4">
-        <h1 class="text-2xl font-bold text-gray-900">Jun AI Tools</h1>
-        <span class="text-sm text-gray-500">Smart Tool Collection</span>
+        <div class="text-4xl">👑</div>
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900" data-i18n="header.title">Jun's AI Kingdom</h1>
+          <p class="text-sm text-gray-600" data-i18n="header.subtitle">AI生成网站集合王国</p>
+        </div>
       </div>
-      <nav class="hidden md:flex space-x-6">
-        <a href="#ai-tools" class="text-gray-600 hover:text-gray-900 font-medium">AI Tools</a>
-        <a href="#traditional-tools" class="text-gray-600 hover:text-gray-900 font-medium">Traditional Tools</a>
-        <a href="mailto:support@junaitools.com" class="text-gray-600 hover:text-gray-900 font-medium">Contact Us</a>
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="#academic" class="text-gray-600 hover:text-purple-600 font-medium transition-colors" data-i18n="nav.academic">学术网站</a>
+        <a href="#therapy" class="text-gray-600 hover:text-blue-600 font-medium transition-colors" data-i18n="nav.therapy">心理治疗</a>
+        <a href="#games" class="text-gray-600 hover:text-green-600 font-medium transition-colors" data-i18n="nav.games">游戏网站</a>
+        <button id="langToggle" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg transition-all text-sm font-medium">
+          <span data-i18n="nav.language">EN</span>
+        </button>
+        <a href="mailto:jununboundlife@gmail.com" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all" data-i18n="nav.contact">联系我</a>
       </nav>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main class="max-w-6xl mx-auto px-4 py-8">
+  <main class="max-w-7xl mx-auto px-4 py-8">
     <!-- Hero Section -->
-    <section class="text-center py-12">
-      <h2 class="text-4xl font-bold text-gray-900 mb-4">Smart Tool Collection</h2>
-      <p class="text-xl text-gray-600 mb-8">Providing AI tools and traditional tools to enhance academic writing and daily work</p>
-      <div class="flex justify-center space-x-4">
-        <a href="#ai-tools" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-          🚀 AI Tools
+    <section class="text-center py-16">
+      <div class="text-6xl mb-6">👑</div>
+      <h2 class="text-5xl font-bold text-gray-900 mb-6" data-i18n="hero.title">欢迎来到Jun的AI王国</h2>
+      <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto" data-i18n="hero.description">
+        这里集合了AI生成的各种各样的网站和应用，有AI网站，也有一些传统的有趣网页。<br>
+        按照不同分类精心整理，每个分类下都有传统网页和AI网页供您选择。
+      </p>
+      <div class="flex justify-center space-x-4 flex-wrap gap-4">
+        <a href="#academic" class="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-8 py-4 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all shadow-lg">
+          📚 <span data-i18n="hero.academic">学术网站</span>
         </a>
-        <a href="#traditional-tools" class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors">
-          📚 Traditional Tools
+        <a href="#therapy" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg">
+          🧠 <span data-i18n="hero.therapy">心理治疗</span>
+        </a>
+        <a href="#games" class="bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-4 rounded-xl hover:from-green-700 hover:to-green-800 transition-all shadow-lg">
+          🎮 <span data-i18n="hero.games">游戏网站</span>
         </a>
       </div>
     </section>
 
-    <!-- AI Tools Section -->
-    <section id="ai-tools" class="py-12">
-      <div class="text-center mb-8">
-        <h3 class="text-3xl font-bold text-gray-900 mb-4">🤖 AI Tools</h3>
-        <p class="text-lg text-gray-600">Intelligent tools based on artificial intelligence</p>
+    <!-- 学术网站分类 -->
+    <section id="academic" class="py-16">
+      <div class="text-center mb-12">
+        <div class="text-5xl mb-4">📚</div>
+        <h3 class="text-4xl font-bold text-gray-900 mb-4" data-i18n="academic.title">学术网站</h3>
+        <p class="text-lg text-gray-600" data-i18n="academic.subtitle">学术写作和研究相关网站</p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- AI Tools Card -->
-        <div class="bg-white p-6 rounded-lg shadow-md border-2 border-dashed border-gray-300">
-          <div class="text-center">
-            <div class="text-4xl mb-4">🚧</div>
-            <h4 class="text-xl font-semibold text-gray-900 mb-2">Coming Soon</h4>
-            <p class="text-gray-600 mb-4">More AI tools are under development...</p>
-            <div class="bg-yellow-50 p-3 rounded-lg">
-              <p class="text-sm text-yellow-800">
-                <strong>Coming Soon:</strong><br>
-                • AI Writing Assistant<br>
-                • Smart Summary Generator<br>
-                • Academic Paper Analysis
-              </p>
-            </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- 传统网页 -->
+        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-purple-200">
+          <div class="flex items-center mb-6">
+            <div class="text-3xl mr-4">🌐</div>
+            <h4 class="text-2xl font-bold text-gray-900" data-i18n="academic.traditional">传统网页</h4>
           </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg shadow-md border-2 border-dashed border-gray-300">
-          <div class="text-center">
-            <div class="text-4xl mb-4">🔮</div>
-            <h4 class="text-xl font-semibold text-gray-900 mb-2">AI Assistant</h4>
-            <p class="text-gray-600 mb-4">Intelligent academic writing assistant</p>
-            <div class="bg-blue-50 p-3 rounded-lg">
-              <p class="text-sm text-blue-800">
-                <strong>Feature Preview:</strong><br>
-                • Smart Citation Suggestions<br>
-                • Writing Style Optimization<br>
-                • Enhanced Grammar Check
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg shadow-md border-2 border-dashed border-gray-300">
-          <div class="text-center">
-            <div class="text-4xl mb-4">📊</div>
-            <h4 class="text-xl font-semibold text-gray-900 mb-2">Data Analysis</h4>
-            <p class="text-gray-600 mb-4">Intelligent data analysis tools</p>
-            <div class="bg-green-50 p-3 rounded-lg">
-              <p class="text-sm text-green-800">
-                <strong>Coming Soon:</strong><br>
-                • Paper Citation Analysis<br>
-                • Academic Trend Prediction<br>
-                • Data Visualization
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Traditional Tools Section -->
-    <section id="traditional-tools" class="py-12">
-      <div class="text-center mb-8">
-        <h3 class="text-3xl font-bold text-gray-900 mb-4">📚 Traditional Tools</h3>
-        <p class="text-lg text-gray-600">Classic and practical academic tools</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Citation Generator -->
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-          <div class="text-center">
-            <div class="text-4xl mb-4">📝</div>
-            <h4 class="text-xl font-semibold text-gray-900 mb-2">Citation Generator</h4>
-            <p class="text-gray-600 mb-4">Supports MLA, APA, Chicago and many other formats</p>
-            <div class="space-y-2 mb-4">
-              <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MLA 9</span>
-              <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded">APA 7</span>
-              <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Chicago</span>
-              <span class="inline-block bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded">Harvard</span>
-              <span class="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">IEEE</span>
-            </div>
-            <a href="/mla" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors block">
-              Use Now
+          <div class="space-y-4">
+            <a href="/mla" class="block p-4 bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-all">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h5 class="font-semibold text-gray-900" data-i18n="academic.citation">引文生成器</h5>
+                  <p class="text-sm text-gray-600" data-i18n="academic.citation_desc">MLA, APA, Chicago等格式</p>
+                </div>
+                <div class="text-purple-600">→</div>
+              </div>
             </a>
-          </div>
-        </div>
-
-        <!-- Placeholder Card -->
-        <div class="bg-white p-6 rounded-lg shadow-md border-2 border-dashed border-gray-300">
-          <div class="text-center">
-            <div class="text-4xl mb-4">📖</div>
-            <h4 class="text-xl font-semibold text-gray-900 mb-2">More Tools</h4>
-            <p class="text-gray-600 mb-4">More traditional tools coming soon</p>
-            <div class="bg-gray-50 p-3 rounded-lg">
-              <p class="text-sm text-gray-600">
-                We are developing more practical academic tools
-              </p>
+            <div class="p-4 bg-gray-50 rounded-lg">
+              <p class="text-sm text-gray-500" data-i18n="academic.more">更多传统学术网站即将推出...</p>
             </div>
           </div>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-md border-2 border-dashed border-gray-300">
-          <div class="text-center">
-            <div class="text-4xl mb-4">🔧</div>
-            <h4 class="text-xl font-semibold text-gray-900 mb-2">Tool Collection</h4>
-            <p class="text-gray-600 mb-4">One-stop academic tool platform</p>
-            <div class="bg-gray-50 p-3 rounded-lg">
-              <p class="text-sm text-gray-600">
-                More features are being planned...
-              </p>
+        <!-- AI网站 -->
+        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-purple-200">
+          <div class="flex items-center mb-6">
+            <div class="text-3xl mr-4">🤖</div>
+            <h4 class="text-2xl font-bold text-gray-900" data-i18n="academic.ai">AI网站</h4>
+          </div>
+          <div class="space-y-4">
+            <div class="p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
+              <h5 class="font-semibold text-gray-900 mb-2" data-i18n="academic.ai_writing">AI写作助手</h5>
+              <p class="text-sm text-gray-600" data-i18n="academic.ai_writing_desc">智能学术写作和润色</p>
+              <span class="inline-block mt-2 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded" data-i18n="coming_soon">即将推出</span>
+            </div>
+            <div class="p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
+              <h5 class="font-semibold text-gray-900 mb-2" data-i18n="academic.ai_summary">智能摘要生成</h5>
+              <p class="text-sm text-gray-600" data-i18n="academic.ai_summary_desc">自动生成论文摘要</p>
+              <span class="inline-block mt-2 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded" data-i18n="coming_soon">即将推出</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Featured Features -->
-    <section class="py-12 bg-white rounded-lg shadow-md">
-      <div class="text-center mb-8">
-        <h3 class="text-3xl font-bold text-gray-900 mb-4">✨ Featured Features</h3>
-        <p class="text-lg text-gray-600">Comprehensive support for academic writing</p>
+    <!-- 心理治疗网站分类 -->
+    <section id="therapy" class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <div class="text-center mb-12">
+        <div class="text-5xl mb-4">🧠</div>
+        <h3 class="text-4xl font-bold text-gray-900 mb-4" data-i18n="therapy.title">心理治疗网站</h3>
+        <p class="text-lg text-gray-600" data-i18n="therapy.subtitle">心理健康和情感支持网站</p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="text-center">
-          <div class="text-3xl mb-3">🎯</div>
-          <h4 class="font-semibold text-gray-900 mb-2">Precise Generation</h4>
-          <p class="text-sm text-gray-600">Generate citations strictly according to academic standards</p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- 传统网页 -->
+        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-blue-200">
+          <div class="flex items-center mb-6">
+            <div class="text-3xl mr-4">🌐</div>
+            <h4 class="text-2xl font-bold text-gray-900" data-i18n="therapy.traditional">传统网页</h4>
+          </div>
+          <div class="space-y-4">
+            <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg">
+              <h5 class="font-semibold text-gray-900" data-i18n="therapy.mood_diary">情绪日记</h5>
+              <p class="text-sm text-gray-600" data-i18n="therapy.mood_diary_desc">记录和分析情绪变化</p>
+              <span class="inline-block mt-2 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded" data-i18n="coming_soon">即将推出</span>
+            </div>
+            <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg">
+              <h5 class="font-semibold text-gray-900" data-i18n="therapy.meditation">冥想引导</h5>
+              <p class="text-sm text-gray-600" data-i18n="therapy.meditation_desc">正念冥想和放松练习</p>
+              <span class="inline-block mt-2 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded" data-i18n="coming_soon">即将推出</span>
+            </div>
+          </div>
         </div>
-        <div class="text-center">
-          <div class="text-3xl mb-3">⚡</div>
-          <h4 class="font-semibold text-gray-900 mb-2">Instant Processing</h4>
-          <p class="text-sm text-gray-600">Fast generation, no waiting required</p>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl mb-3">🆓</div>
-          <h4 class="font-semibold text-gray-900 mb-2">Completely Free</h4>
-          <p class="text-sm text-gray-600">All basic features are free to use</p>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl mb-3">🔒</div>
-          <h4 class="font-semibold text-gray-900 mb-2">Privacy Protection</h4>
-          <p class="text-sm text-gray-600">Local processing, data security</p>
+
+        <!-- AI网站 -->
+        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-blue-200">
+          <div class="flex items-center mb-6">
+            <div class="text-3xl mr-4">🤖</div>
+            <h4 class="text-2xl font-bold text-gray-900" data-i18n="therapy.ai">AI网站</h4>
+          </div>
+          <div class="space-y-4">
+            <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg">
+              <h5 class="font-semibold text-gray-900 mb-2" data-i18n="therapy.ai_counselor">AI心理咨询师</h5>
+              <p class="text-sm text-gray-600" data-i18n="therapy.ai_counselor_desc">24/7智能心理支持</p>
+              <span class="inline-block mt-2 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded" data-i18n="coming_soon">即将推出</span>
+            </div>
+            <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg">
+              <h5 class="font-semibold text-gray-900 mb-2" data-i18n="therapy.emotion_analysis">情绪分析助手</h5>
+              <p class="text-sm text-gray-600" data-i18n="therapy.emotion_analysis_desc">智能分析情绪状态</p>
+              <span class="inline-block mt-2 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded" data-i18n="coming_soon">即将推出</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- 游戏网站分类 -->
+    <section id="games" class="py-16">
+      <div class="text-center mb-12">
+        <div class="text-5xl mb-4">🎮</div>
+        <h3 class="text-4xl font-bold text-gray-900 mb-4" data-i18n="games.title">游戏网站</h3>
+        <p class="text-lg text-gray-600" data-i18n="games.subtitle">娱乐和游戏相关网站</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- 传统网页 -->
+        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-green-200">
+          <div class="flex items-center mb-6">
+            <div class="text-3xl mr-4">🌐</div>
+            <h4 class="text-2xl font-bold text-gray-900" data-i18n="games.traditional">传统网页</h4>
+          </div>
+          <div class="space-y-4">
+            <div class="p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-lg">
+              <h5 class="font-semibold text-gray-900" data-i18n="games.guide">游戏攻略</h5>
+              <p class="text-sm text-gray-600" data-i18n="games.guide_desc">热门游戏攻略和技巧</p>
+              <span class="inline-block mt-2 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded" data-i18n="coming_soon">即将推出</span>
+            </div>
+            <div class="p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-lg">
+              <h5 class="font-semibold text-gray-900" data-i18n="games.calculator">游戏计算器</h5>
+              <p class="text-sm text-gray-600" data-i18n="games.calculator_desc">游戏数值计算网站</p>
+              <span class="inline-block mt-2 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded" data-i18n="coming_soon">即将推出</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI网站 -->
+        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-green-200">
+          <div class="flex items-center mb-6">
+            <div class="text-3xl mr-4">🤖</div>
+            <h4 class="text-2xl font-bold text-gray-900" data-i18n="games.ai">AI网站</h4>
+          </div>
+          <div class="space-y-4">
+            <div class="p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg">
+              <h5 class="font-semibold text-gray-900 mb-2" data-i18n="games.ai_assistant">AI游戏助手</h5>
+              <p class="text-sm text-gray-600" data-i18n="games.ai_assistant_desc">智能游戏策略建议</p>
+              <span class="inline-block mt-2 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded" data-i18n="coming_soon">即将推出</span>
+            </div>
+            <div class="p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg">
+              <h5 class="font-semibold text-gray-900 mb-2" data-i18n="games.content_generation">游戏内容生成</h5>
+              <p class="text-sm text-gray-600" data-i18n="games.content_generation_desc">AI生成游戏内容和故事</p>
+              <span class="inline-block mt-2 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded" data-i18n="coming_soon">即将推出</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-8 mt-12">
-    <div class="max-w-6xl mx-auto px-4">
+  <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12 mt-16">
+    <div class="max-w-7xl mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-          <h4 class="font-semibold mb-4">Jun AI Tools</h4>
-          <p class="text-gray-300 text-sm">Providing AI tools and traditional tools to enhance academic writing and daily work</p>
+          <div class="flex items-center mb-4">
+            <div class="text-2xl mr-2">👑</div>
+            <h4 class="text-xl font-bold" data-i18n="footer.title">Jun's AI Kingdom</h4>
+          </div>
+          <p class="text-gray-300 text-sm" data-i18n="footer.subtitle">AI生成网站集合王国，为您的各种需求提供智能解决方案</p>
         </div>
         <div>
-          <h4 class="font-semibold mb-4">Quick Links</h4>
+          <h4 class="font-semibold mb-4" data-i18n="footer.categories">网站分类</h4>
           <div class="space-y-2">
-            <a href="/mla" class="block text-gray-300 hover:text-white text-sm">Citation Generator</a>
-            <a href="/mla/terms" class="block text-gray-300 hover:text-white text-sm">Terms of Service</a>
-            <a href="/mla/privacy" class="block text-gray-300 hover:text-white text-sm">Privacy Policy</a>
-            <a href="/mla/pricing" class="block text-gray-300 hover:text-white text-sm">Pricing Plans</a>
+            <a href="#academic" class="block text-gray-300 hover:text-purple-400 text-sm transition-colors">📚 <span data-i18n="footer.academic">学术网站</span></a>
+            <a href="#therapy" class="block text-gray-300 hover:text-blue-400 text-sm transition-colors">🧠 <span data-i18n="footer.therapy">心理治疗</span></a>
+            <a href="#games" class="block text-gray-300 hover:text-green-400 text-sm transition-colors">🎮 <span data-i18n="footer.games">游戏网站</span></a>
           </div>
         </div>
         <div>
-          <h4 class="font-semibold mb-4">Contact Us</h4>
+          <h4 class="font-semibold mb-4" data-i18n="footer.contact">联系我们</h4>
           <div class="space-y-2">
-            <p class="text-gray-300 text-sm">📧 support@junaitools.com</p>
+            <p class="text-gray-300 text-sm">📧 jununboundlife@gmail.com</p>
             <p class="text-gray-300 text-sm">🌐 junaitools.com</p>
+            <div class="flex space-x-4 mt-4">
+              <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors cursor-pointer">
+                <span class="text-sm">📧</span>
+              </div>
+              <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors cursor-pointer">
+                <span class="text-sm">💬</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="border-t border-gray-700 mt-8 pt-4 text-center">
-        <p class="text-gray-400 text-sm">© 2025 Jun AI Tools. All rights reserved.</p>
+      <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+        <p class="text-gray-400 text-sm" data-i18n="footer.copyright">© 2025 Jun's AI Kingdom. 保留所有权利。</p>
       </div>
     </div>
   </footer>
+
+  <!-- Language Toggle Script -->
+  <script>
+    // 语言数据
+    const translations = {
+      zh: {
+        'header.title': 'Jun\'s AI Kingdom',
+        'header.subtitle': 'AI生成网站集合王国',
+        'nav.academic': '学术网站',
+        'nav.therapy': '心理治疗',
+        'nav.games': '游戏网站',
+        'nav.adult': '成人网站',
+        'nav.language': 'EN',
+        'nav.contact': '联系我',
+        'hero.title': '欢迎来到Jun的AI王国',
+        'hero.description': '这里集合了AI生成的各种各样的网站和应用，有AI网站，也有一些传统的有趣网页。<br>按照不同分类精心整理，每个分类下都有传统网页和AI网页供您选择。',
+        'hero.academic': '学术网站',
+        'hero.therapy': '心理治疗',
+        'hero.games': '游戏网站',
+        'hero.adult': '成人网站',
+        'academic.title': '学术网站',
+        'academic.subtitle': '学术写作和研究相关网站',
+        'academic.traditional': '传统网页',
+        'academic.ai': 'AI网站',
+        'academic.citation': '引文生成器',
+        'academic.citation_desc': 'MLA, APA, Chicago等格式',
+        'academic.more': '更多传统学术网站即将推出...',
+        'academic.ai_writing': 'AI写作助手',
+        'academic.ai_writing_desc': '智能学术写作和润色',
+        'academic.ai_summary': '智能摘要生成',
+        'academic.ai_summary_desc': '自动生成论文摘要',
+        'coming_soon': '即将推出',
+        'therapy.title': '心理治疗网站',
+        'therapy.subtitle': '心理健康和情感支持网站',
+        'therapy.traditional': '传统网页',
+        'therapy.ai': 'AI网站',
+        'therapy.mood_diary': '情绪日记',
+        'therapy.mood_diary_desc': '记录和分析情绪变化',
+        'therapy.meditation': '冥想引导',
+        'therapy.meditation_desc': '正念冥想和放松练习',
+        'therapy.ai_counselor': 'AI心理咨询师',
+        'therapy.ai_counselor_desc': '24/7智能心理支持',
+        'therapy.emotion_analysis': '情绪分析助手',
+        'therapy.emotion_analysis_desc': '智能分析情绪状态',
+        'games.title': '游戏网站',
+        'games.subtitle': '娱乐和游戏相关网站',
+        'games.traditional': '传统网页',
+        'games.ai': 'AI网站',
+        'games.guide': '游戏攻略',
+        'games.guide_desc': '热门游戏攻略和技巧',
+        'games.calculator': '游戏计算器',
+        'games.calculator_desc': '游戏数值计算网站',
+        'games.ai_assistant': 'AI游戏助手',
+        'games.ai_assistant_desc': '智能游戏策略建议',
+        'games.content_generation': '游戏内容生成',
+        'games.content_generation_desc': 'AI生成游戏内容和故事',
+        'adult.title': '成人网站',
+        'adult.subtitle': '成人内容相关网站（18+）',
+        'adult.traditional': '传统网页',
+        'adult.ai': 'AI网站',
+        'adult.navigation': '成人网站导航',
+        'adult.navigation_desc': '乌克兰、欧洲、日本、美国分类导航',
+        'adult.ai_content': 'AI内容生成',
+        'adult.ai_content_desc': '智能成人内容生成',
+        'adult.content_review': '智能内容审核',
+        'adult.content_review_desc': 'AI内容安全和审核',
+        'footer.title': 'Jun\'s AI Kingdom',
+        'footer.subtitle': 'AI生成网站集合王国，为您的各种需求提供智能解决方案',
+        'footer.categories': '网站分类',
+        'footer.contact': '联系我们',
+        'footer.copyright': '© 2025 Jun\'s AI Kingdom. 保留所有权利。',
+        'footer.academic': '学术网站',
+        'footer.therapy': '心理治疗',
+        'footer.games': '游戏网站',
+        'footer.adult': '成人网站'
+      },
+      en: {
+        'header.title': 'Jun\'s AI Kingdom',
+        'header.subtitle': 'AI-Generated Websites Collection Kingdom',
+        'nav.academic': 'Academic',
+        'nav.therapy': 'Therapy',
+        'nav.games': 'Games',
+        'nav.adult': 'Adult',
+        'nav.language': '中文',
+        'nav.contact': 'Contact',
+        'hero.title': 'Welcome to Jun\'s AI Kingdom',
+        'hero.description': 'Here is a collection of various AI-generated websites and applications, including AI websites and traditional fun web pages.<br>Carefully organized by different categories, each category offers both traditional web pages and AI websites for your choice.',
+        'hero.academic': 'Academic',
+        'hero.therapy': 'Therapy',
+        'hero.games': 'Games',
+        'hero.adult': 'Adult',
+        'academic.title': 'Academic Websites',
+        'academic.subtitle': 'Websites for academic writing and research',
+        'academic.traditional': 'Traditional Web',
+        'academic.ai': 'AI Websites',
+        'academic.citation': 'Citation Generator',
+        'academic.citation_desc': 'MLA, APA, Chicago and more formats',
+        'academic.more': 'More traditional academic websites coming soon...',
+        'academic.ai_writing': 'AI Writing Assistant',
+        'academic.ai_writing_desc': 'Intelligent academic writing and polishing',
+        'academic.ai_summary': 'Smart Summary Generator',
+        'academic.ai_summary_desc': 'Automatically generate paper abstracts',
+        'coming_soon': 'Coming Soon',
+        'therapy.title': 'Therapy Websites',
+        'therapy.subtitle': 'Mental health and emotional support websites',
+        'therapy.traditional': 'Traditional Web',
+        'therapy.ai': 'AI Websites',
+        'therapy.mood_diary': 'Mood Diary',
+        'therapy.mood_diary_desc': 'Record and analyze emotional changes',
+        'therapy.meditation': 'Meditation Guide',
+        'therapy.meditation_desc': 'Mindfulness meditation and relaxation exercises',
+        'therapy.ai_counselor': 'AI Counselor',
+        'therapy.ai_counselor_desc': '24/7 intelligent psychological support',
+        'therapy.emotion_analysis': 'Emotion Analysis Assistant',
+        'therapy.emotion_analysis_desc': 'Intelligent emotion state analysis',
+        'games.title': 'Game Websites',
+        'games.subtitle': 'Entertainment and gaming related websites',
+        'games.traditional': 'Traditional Web',
+        'games.ai': 'AI Websites',
+        'games.guide': 'Game Guides',
+        'games.guide_desc': 'Popular game strategies and tips',
+        'games.calculator': 'Game Calculator',
+        'games.calculator_desc': 'Game value calculation websites',
+        'games.ai_assistant': 'AI Game Assistant',
+        'games.ai_assistant_desc': 'Intelligent game strategy suggestions',
+        'games.content_generation': 'Game Content Generation',
+        'games.content_generation_desc': 'AI-generated game content and stories',
+        'adult.title': 'Adult Websites',
+        'adult.subtitle': 'Adult content related websites (18+)',
+        'adult.traditional': 'Traditional Web',
+        'adult.ai': 'AI Websites',
+        'adult.navigation': 'Adult Website Navigation',
+        'adult.navigation_desc': 'Ukraine, Europe, Japan, USA categorized navigation',
+        'adult.ai_content': 'AI Content Generation',
+        'adult.ai_content_desc': 'Intelligent adult content generation',
+        'adult.content_review': 'Smart Content Review',
+        'adult.content_review_desc': 'AI content safety and review',
+        'footer.title': 'Jun\'s AI Kingdom',
+        'footer.subtitle': 'AI-Generated Websites Collection Kingdom, providing intelligent solutions for all your needs',
+        'footer.categories': 'Website Categories',
+        'footer.contact': 'Contact Us',
+        'footer.copyright': '© 2025 Jun\'s AI Kingdom. All rights reserved.',
+        'footer.academic': 'Academic',
+        'footer.therapy': 'Therapy',
+        'footer.games': 'Games',
+        'footer.adult': 'Adult'
+      }
+    };
+
+    // 当前语言状态
+    let currentLang = 'en';
+
+    // 切换语言函数
+    function toggleLanguage() {
+      currentLang = currentLang === 'zh' ? 'en' : 'zh';
+      updateLanguage();
+    }
+
+    // 更新页面语言
+    function updateLanguage() {
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+          if (element.tagName === 'INPUT' && element.type === 'text') {
+            element.placeholder = translations[currentLang][key];
+          } else {
+            element.innerHTML = translations[currentLang][key];
+          }
+        }
+      });
+      
+      // 更新HTML lang属性
+      document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
+    }
+
+    // 初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      // 绑定语言切换按钮事件
+      const langToggle = document.getElementById('langToggle');
+      if (langToggle) {
+        langToggle.addEventListener('click', toggleLanguage);
+      }
+      
+      // 初始化语言
+      updateLanguage();
+    });
+  </script>
 </body>
 </html>
