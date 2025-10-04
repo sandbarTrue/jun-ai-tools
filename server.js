@@ -57,12 +57,13 @@ app.use(express.urlencoded({ extended: true }));
 // 日志记录功能 - 按日期分割
 const getLogFileName = () => {
   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-  const logDir = process.env.LOG_DIR || '/home/ztshkzhkyl/log';
+  // 本地开发环境使用相对路径，生产环境使用绝对路径
+  const logDir = process.env.LOG_DIR || (isDevelopment ? './logs' : '/home/ztshkzhkyl/log');
   return `${logDir}/app-${today}.log`;
 };
 
 const ensureLogsDir = () => {
-  const logDir = process.env.LOG_DIR || '/home/ztshkzhkyl/log';
+  const logDir = process.env.LOG_DIR || (isDevelopment ? './logs' : '/home/ztshkzhkyl/log');
   if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir, { recursive: true });
   }

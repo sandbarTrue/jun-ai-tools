@@ -1,1 +1,4 @@
 {"timestamp":"2025-10-03T12:05:09.887Z","level":"SUCCESS","message":"Application started","data":{"port":3000,"environment":"development","creem_api":"https://test-api.creem.io","timestamp":"2025-10-03T12:05:09.887Z"}}
+{"timestamp":"2025-10-03T12:15:35.393Z","level":"WARN","message":"Application shutting down (SIGINT)","data":{}}
+{"timestamp":"2025-10-03T12:59:26.970Z","level":"SUCCESS","message":"Application started","data":{"port":3000,"environment":"development","creem_api":"https://test-api.creem.io","timestamp":"2025-10-03T12:59:26.969Z"}}
+{"timestamp":"2025-10-03T13:30:00.642Z","level":"SUCCESS","message":"Application started","data":{"port":3000,"environment":"development","creem_api":"https://test-api.creem.io","timestamp":"2025-10-03T13:30:00.642Z"}}
